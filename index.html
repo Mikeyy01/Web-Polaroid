@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Polaroid</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<div class="polaroid">
+    <div class="shading1"></div>
+    <div class="lensecontainer"></div>
+    <div class="innercircle1">
+        <div class="lenseshading"></div>
+    </div>
+    <div class="innercircle1"></div>
+    <div class="innercircle2"></div>
+    <div class="whitecircle"></div>
+    <div class="blackcircle1"></div>
+    <div class="blackcircle2"></div>
+    <div class="yellowbutton"></div>
+    <div class="yellowslider"></div>
+    <div class="flashinside">
+        <div class="grayborder"></div>
+        <div class="verticallines"></div>
+        <div class="horizontallines"></div>
+        <div class="gradient"></div>
+    </div>
+    <dic class="flashside"></dic>
+
+    <div class="topgreen"></div>
+    <div class="bottomgreen"></div>
+    <div class="yellowflare"></div>
+    <div class="whitebox"></div>
+    <div class="lightgraybox"></div>
+    <div class="graybox"></div>
+    <div class="whitereflection"></div>
+    <div class="tophalf">
+        <div class="grayleft"></div>
+        <div class="grayright"></div>
+        <div class="slider">
+            <div class="innerinnersliderbg">
+                <div class="sliderbutton"></div>
+            </div>
+            <div class="innersliderbg"></div>
+        </div>
+        <h2>Polaroid</h2>
+        <div class="bottomhalf">
+            <div class="printerback">
+                <div class="printer"></div>
+            </div>
+            <div class="rainbox">
+                <div class="color1"></div>
+                <div class="color2"></div>
+                <div class="color3"></div>
+                <div class="color4"></div>
+                <div class="color5"></div>
+            </div>
+        </div>
+        <div class="bottombottom"></div>
+    </div>
+    <img src="pogger.png" class="back">
+    <div class="redbutton"></div>
+    <button id="snap"></button>
+    <video id="video" width="200" height="155" autoplay></video>
+    <div class="polaroidphoto" id="paper">
+        <canvas id="canvas" width="1920" height="1080"></canvas>
+    </div>
+    <script>
+        let canvas = document.querySelector("#canvas");
+        let context = canvas.getContext("2d");
+        let video = document.querySelector("#video");
+
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({
+                video: true
+            }).then((stream) => {
+                video.srcObject = stream;
+                video.play();
+            });
+        }
+
+        document.getElementById("snap").addEventListener("click", () => {
+            context.drawImage(video, 0, 0, 640, 480);
+        });
+    </script>
+</div>
+
+<body>
+</body></html>
